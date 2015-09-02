@@ -1,0 +1,224 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>账户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" /> <!--safari 全屏展示-->
+    <!--<meta content="black" name="apple-mobile-web-app-status-bar-style" /> <!--IOS 顶栏状态栏 运营商那个地方的样式-->
+    <meta content="telephone=no" name="format-detection" /> <!--IOS电话格式无视-->
+    <meta content="email=no" name="format-detection" /><!--安卓邮件格式无视-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/owl-carousel/1.32/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/owl-carousel/1.32/owl.theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/ProductCheck.css">
+
+    <!--<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body>
+<div class="container">
+    <div class="col-xs-12 TopBar">
+        <div class="col-xs-3 text-left">
+            <img class="back" src="img/iconfont-zuo.png">
+        </div>
+        <div class="col-xs-6 text-center TopBarMart" >
+            产品查询
+        </div>
+        <div class="col-xs-3 text-right" style="padding: 0 18px;">
+            <img class="share" width="32" src="img/iconfont-fenxiang.png">
+        </div>
+    </div>
+    <div class="col-xs-12 DetailsData">
+        <p>产品名称<span class="right">长安1号</span></p>
+        <p>产品净值(元)<span class="right">2.88</span></p>
+        <p>累计净值(元)<span class="right">2.88</span></p>
+    </div>
+    <div class="col-xs-12 DetailsCharts">
+        <div id="owl-example" class="owl-carousel">
+            <div>
+                <p>产品净值曲线图（净值单位：元）<span class="right">2015-03-26</span></p>
+                <div class="col-xs-12" id="container-Nav"></div>
+            </div>
+            <div>
+                <p>累计净值曲线图（净值单位：元）<span class="right">2015-03-26</span></p>
+                <div class="col-xs-12" id="container-aNav"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 CallProjectManager text-center">
+        <a href="tel:15692456114"><img src="img/Manager.png" width="14">联系项目经理</a>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.js"></script>
+<script src="//cdn.bootcss.com/highcharts/4.1.7/highcharts.js"></script>
+<script src="https://cdn.bootcss.com/owl-carousel/1.32/owl.carousel.min.js"></script>
+<script src="js/Public.js"></script>
+<script>
+    $(document).ready(function() {
+        var owl = $("#owl-example");
+        owl.owlCarousel({
+            navigationText: ["prev", "next"],
+            slideSpeed: 300,
+            autoPlay: false,
+            pagination: true,
+            items: 1
+        })
+        var WindowsW = document.body.clientWidth
+        if (WindowsW > 414) {
+            WindowsW = 414;
+        }
+        $('#container-Nav').css('width', WindowsW)
+        $('#container-Nav').css('height', (WindowsW) * 3 / 4)
+        $('#container-Nav').highcharts({
+            chart: {
+                type: 'area',
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: ["03.06", "03.07", "03.08", "03.09", "03.10"],
+                labels: {
+                    rotation: 0,
+                    formatter: function () {
+                        return this.value; // clean, unformatted number for year
+                    },
+
+                }
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '<b color:black;>净值：</b><b style="color:red;">{point.y}</b>'
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    text: null,
+                    color: "rgba(96,169,244,0.4)",
+                    fillColor: {
+                        linearGradient: {x1: 0, y1: 0, x2: 1, y2: 1},
+                        stops: [
+                            [0, "rgba(96,169,244,0.8)"],
+                            [1, "rgba(96,169,244,0.4)"]
+                        ]
+                    },
+                    pointStart: 0,
+                    marker: {
+                        enabled: false,
+                        symbol: 'circle',
+                        radius: 2,
+                        states: {
+                            hover: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                color: "rgba(96,169,244,1.0)",
+//                pointWidth: 5, //柱子之间的距离值
+                data: [1.789, 1.791, 1.771, 1.782, 1.811]
+            }],
+            credits: {
+                text: null
+
+            }
+        },function(chart){
+//            var seriesList = chart.series;
+//            for(var i = 0;i<seriesList.length;i++){
+//                var pointList = seriesList[i].points;
+//                for(var j = 0;j<pointList.length;j++){
+//                    chart.series[i].points[j].update({
+//                        color: "red",
+//                    })
+//                }
+//            }
+        });
+        $('#container-aNav').css('width', WindowsW)
+        $('#container-aNav').css('height', (WindowsW) * 3 / 4)
+        $('#container-aNav').highcharts({
+            chart: {
+                type: 'area',
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: ["03.06", "03.07", "03.08", "03.09", "03.10"],
+                labels: {
+                    rotation: 0,
+                    formatter: function () {
+                        return this.value; // clean, unformatted number for year
+                    },
+
+                }
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '<b color:black;>净值：</b><b style="color:red;">{point.y}</b>'
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    text: null,
+                    color: "rgba(96,169,244,0.4)",
+                    fillColor: {
+                        linearGradient: {x1: 0, y1: 0, x2: 1, y2: 1},
+                        stops: [
+                            [0, "rgba(96,169,244,0.8)"],
+                            [1, "rgba(96,169,244,0.4)"]
+                        ]
+                    },
+                    pointStart: 0,
+                    marker: {
+                        enabled: false,
+                        symbol: 'circle',
+                        radius: 2,
+                        states: {
+                            hover: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                color: "rgba(96,169,244,1.0)",
+                pointWidth: 5, //柱子之间的距离值
+                data: [1.789, 1.791, 1.771, 1.782, 1.811]
+            }],
+            credits: {
+                text: null
+
+            }
+        });
+    })
+</script>
+</body>
+</html>

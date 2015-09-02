@@ -1,0 +1,13 @@
+.control-label {
+    text-align: left!important;
+    padding-top: 11px!important;
+}
+.form-group {
+    margin-bottom: 0px;
+}
+#Company {
+    text-align: left;
+}
+#name, #phonenum {
+    text-align: right;
+}

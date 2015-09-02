@@ -1,0 +1,164 @@
+html {
+    margin: 0;padding: 0;
+    font-size: 18px;
+}
+body {
+    margin: 0;padding: 0;
+    font-family: "黑体", Helvetica, Arial, sans-serif;
+    background: #eeeeee;
+    color: #4a4a4a;
+}
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+    -webkit-appearance: caret;
+    -moz-appearance: caret; /* mobile firefox too! */
+}
+.container {
+    max-width: 414px;
+    padding: 0px;
+}
+.back, #back {
+    margin-top: 10px;
+}
+
+h4 {
+    font-size: 0.83333rem;
+}
+.content{
+    padding: 1.1rem;
+    font-size: 0.8rem;
+    background: #fff;
+}
+.TopBarMart {
+    margin-top: 8px;
+}
+.width25,.width75 {
+    float: left;
+}
+.width25 {
+    width: 25%;
+}
+.width75 {
+    width: 75%;
+}
+.back {
+    margin-top: 11px;
+}
+.TopBar {
+    /*background-color: #0062B3;*/
+    padding: 0;
+    background: -webkit-gradient(linear,0 0,0 100%,from(#005eaf),to(#008fd5));
+    font-size: 1.0rem;
+    vertical-align: middle;
+    color: #fff;
+    height: 40px;
+}
+.btn {
+    height: 40px;
+}
+.btn-warning {
+    background: #ffb412;
+    border-color: #ffb412;
+}
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .open>.dropdown-toggle.btn-warning {
+    color: #fff;
+    background-color: #ffb412;
+    border-color: #ffb412;
+}
+.btn-info {
+    background: #60a9f4;
+    border-color: #60a9f4;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open>.dropdown-toggle.btn-info {
+    color: #fff;
+    background-color: #60a9f4;
+    border-color: #60a9f4;
+}
+.btn-default {
+    color: #fff;
+    background: #bfbfbf;
+    border-color: #bfbfbf;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
+    color: #fff;
+    background-color: #bfbfbf;
+    border-color: #bfbfbf;
+}
+input[type="text"], input[type="text"]:focus,input[type="password"], input[type="password"]:focus,input[type="number"], input[type="number"]:focus,input[type="tel"], input[type="tel"]:focus{
+    box-shadow:none;
+    background:none;
+    border: 0;
+}
+.form-group {
+    background-color: #fff;
+}
+.form-control {
+    height: 45px!important;
+    line-height: 45px!important;
+}
+.top1px {
+    border-top: 1px solid #dcdcdc;
+}
+a.btn {
+    padding: 9px 12px;
+}
+.sweet-alert button {
+    padding: 10px 20px!important;
+}
+.right {
+    float: right;
+}
+.owl-theme .owl-controls .owl-page span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    margin: -30px 7px;
+    filter: Alpha(Opacity=50);
+    opacity: .5;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background: #E7ECEB;
+}
+.owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span {
+    filter: Alpha(Opacity=100);
+    opacity: 0.8;
+}
+.share {
+    margin-top: 4px;
+}
+.active {
+    color: #60a9f4;
+    background: url(../img/jiantou2.png) no-repeat center bottom;
+}
+.chk_1 {
+    display: none;
+}
+.chk_1 + label {
+    background: url("../img/xuanze_off.png") no-repeat center;
+    background-size: 12px 12px;
+    padding: 9px;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+}
+.chk_1:checked + label {
+    background: url("../img/xuanze_on.png") no-repeat center;
+    background-size: 12px 12px;
+}
+.chk_1:checked + label:after {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.question {
+    margin-top: 5px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.8rem;
+    background: #fff;
+}
+
+
+
+

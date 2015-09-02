@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	  http://www.springframework.org/schema/aop
+	  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	default-autowire="byName">
+
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.dl.middleware" />
+	<context:component-scan base-package="com.dl.wechat" />
+
+	<!-- 加载jdbc.properties配置文件,配置数据源 -->
+	<context:property-placeholder location="classpath:database/jdbc.properties" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>${datasource.driver.class}</value>
+		</property>
+		<property name="url">
+			<value>${datasource.url}</value>
+		</property>
+		<property name="username">
+			<value>${datasource.username}</value>
+		</property>
+		<property name="password">
+			<value>${datasource.password}</value>
+		</property>
+		<property name="initialSize">
+			<value>${datasource.initialSize}</value>
+		</property>
+		<property name="maxActive">
+			<value>${datasource.maxActive}</value>
+		</property>
+		<property name="logAbandoned" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="3600" />
+		<property name="testWhileIdle" value="true" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
+		<property name="timeBetweenEvictionRunsMillis" value="1800000" />
+	</bean>
+
+<!--
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>${datasource.driverClass}</value>
+		</property>
+		<property name="url">
+			<value>${datasource.jdbcUrl}</value>
+		</property>
+		<property name="username">
+			<value>${datasource.user}</value>
+		</property>
+		<property name="password">
+			<value>${datasource.password}</value>
+		</property>
+		<property name="initialSize">
+			<value>${datasource.initialSize}</value>
+		</property>
+		<property name="maxActive">
+			<value>${datasource.maxActive}</value>
+		</property>
+		<property name="maxIdle">
+			<value>${datasource.maxIdle}</value>
+		</property>
+		<property name="minIdle">
+			<value>${datasource.minIdle}</value>
+		</property>
+		<property name="logAbandoned" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="testOnBorrow" value="true" />
+		<property name="removeAbandonedTimeout" value="180" />
+		<property name="maxWait" value="1000" />
+		<property name="validationQuery" value="select 1 from dual" />
+		<property name="testWhileIdle" value="true" />
+		<property name="minEvictableIdleTimeMillis" value="1800000" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+	</bean>
+-->
+	
+	<!-- 配置Spring数据源事务管理器 -->
+	<bean id="txManagerDL"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 基于注解(@Transactional)的事务管理 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<!--
+	<bean id="transactionInterceptorDL"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="txManagerDL" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="create*">PROPAGATION_REQUIRED</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+				<prop key="put*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="autoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<value>*Service*</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptorDL</value>
+			</list>
+		</property>
+	</bean>
+	-->
+
+	<!-- Spring提供的iBatis的SqlMap配置 -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:database/SqlMapConfig.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="txManagerDL">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="merge*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="put*" propagation="REQUIRED" />
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="count*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="list*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="batchSaveOrUpdate" propagation="REQUIRES_NEW" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!--
+	<bean id="aopAspect" class="com.dl.middleware.base.aop.AopAspect"></bean>
+	<bean id="sessionAopAspect" class="com.dl.middleware.base.aop.TradeSessionAopAspect"></bean>
+	
+	<aop:config proxy-target-class="true">
+		<aop:aspect id="actionTime" ref="aopAspect">
+			<aop:pointcut id="actionMethod"
+				expression="execution(* com.dl.middleware.base.action.*.*Action.execute(..))" />
+			<aop:around pointcut-ref="actionMethod" method="doAround" />
+		</aop:aspect>
+		<aop:aspect id="actionTime2" ref="aopAspect">
+			<aop:pointcut id="actionMethod2"
+				expression="execution(* com.dl.middleware.base.action.deploy.LotteryAction.add(..))
+				|| execution(* com.dl.middleware.base.action.deploy.LotteryAction.refresh(..))
+				|| execution(* com.dl.middleware.base.action.deploy.LotteryAction.info(..))
+				|| execution(* com.dl.middleware.base.action.deploy.LotteryAction.getaward(..))
+				|| execution(* com.dl.middleware.base.action.deploy.LotteryAction.getshare(..))
+				|| execution(* com.dl.middleware.base.action.deploy.LotteryAction.sharelist(..))
+				|| execution(* com.dl.middleware.base.action.deploy.LotteryAction.getUserInfo(..))
+				" />
+			<aop:around pointcut-ref="actionMethod2" method="doAround" />
+		</aop:aspect>
+		<aop:aspect id="tradeSesssion" ref="sessionAopAspect">
+			<aop:pointcut id="tradeActionMethod" expression="execution(* com.dl.middleware.base.action.trade.*Action.execute(..))" />
+			<aop:around pointcut-ref="tradeActionMethod" method="doAround" />
+		</aop:aspect>
+		<aop:aspect id="valuquerySesssion" ref="sessionAopAspect">
+			<aop:pointcut id="valuqueryActionMethod" expression="execution(* com.dl.middleware.base.action.valuquery.*Action.execute(..))" />
+			<aop:around pointcut-ref="valuqueryActionMethod" method="doAround" />
+		</aop:aspect>
+	</aop:config>
+
+	<aop:aspectj-autoproxy />
+	-->
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="resolveLazily" value="true" />
+		<property name="maxUploadSize" value="100971520" />
+		<property name="maxInMemorySize" value="4096" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	
+	<bean id="aopAspect" class="com.dl.middleware.base.aop.AopAspect"></bean>
+</beans>

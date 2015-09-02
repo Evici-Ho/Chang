@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我要合作</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" /> <!--safari 全屏展示-->
+    <!--<meta content="black" name="apple-mobile-web-app-status-bar-style" /> <!--IOS 顶栏状态栏 运营商那个地方的样式-->
+    <meta content="telephone=no" name="format-detection" /> <!--IOS电话格式无视-->
+    <meta content="email=no" name="format-detection" /><!--安卓邮件格式无视-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/Register.css">
+    <!--<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body>
+<div class="container">
+    <div class="col-xs-12 TopBar">
+        <div class="col-xs-3 text-left TopBarMart" id="back">
+            取消
+        </div>
+        <div class="col-xs-6 text-center TopBarMart" style="margin-top: 8px;">
+            注册
+        </div>
+        <div class="col-xs-3 text-right TopBarMart" id="Login">
+            登录
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <h4>公司名称或备案号<img id="why" src="img/why.png"></h4>
+    </div>
+    <div class="col-xs-12 form-horizontal inputbox">
+        <div class="form-group">
+            <input type="text" class="form-control" id="account" placeholder="请输入营业执照名称或基金业协会备案号">
+        </div>
+        <p>
+            提示：<br>
+            根据《私募投资基金监督管理暂行办法》及《私募投资基金管理人登记和基金备案办法（试行1》的相关要求，私募基金管理人应当向基金业协会履行登记手续。目前长安基金仅与在基金业协会备案的私募基金管理人开展业务合作。
+        </p>
+    </div>
+    <div class="col-xs-12" style="margin-top: 20px;;">
+        <button class="btn btn-warning btn-block" id="next">下一步</button>
+    </div>
+    <div class="col-xs-12" style="margin-top: 20px;">
+        <p>
+            声明：长安基金保证您的注册信息仅用于业务联系
+            不作为其他商业用途
+        </p>
+    </div>
+
+
+
+</div>
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.js"></script>
+<script src="js/Public.js"></script>
+<script>
+    $("#Login").click(function(){
+        window.location.href="Login.html"
+    })
+    $("#next").click(function(){
+       if($("#account").val()==""){
+           swal({title:"" ,text: "请输入公司名称或备案号",   timer: 2000,   showConfirmButton: false });
+       }else{
+           if($("#account").val()=="1"){
+               window.location.href="Information.html"
+           }else{
+               if($("#account").val()=="2") {
+                   swal({title:"" ,text: "该名称或备案号已经开户，正在为你跳转登陆页面",   timer: 2000,   showConfirmButton: false },function(){
+                       window.location.href = "Login.html"
+                   });
+               }else{
+                   swal({
+                       title: "",
+                       text: "根据目前基金业协会网站的公开信息，我们尚未能查询到贵司已完成备案的相关信息",
+                       showCancelButton: true,   confirmButtonColor: "#DD6B55",
+                       confirmButtonText: "我已备案",   cancelButtonText: "我未备案",
+                       closeOnConfirm: false,
+                       closeOnCancel: false
+                       },
+                       function(isConfirm){
+                           if (isConfirm) {
+                               window.location.href="FinishRecord.html"
+                           }
+                           else{
+                               window.location.href="PrivateFundRecord.html"
+                           }
+                       })
+               }
+           }
+       }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" /> <!--safari 全屏展示-->
+    <!--<meta content="black" name="apple-mobile-web-app-status-bar-style" /> <!--IOS 顶栏状态栏 运营商那个地方的样式-->
+    <meta content="telephone=no" name="format-detection" /> <!--IOS电话格式无视-->
+    <meta content="email=no" name="format-detection" /><!--安卓邮件格式无视-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/Information.css">
+    <!--<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body>
+<div class="container">
+    <div class="col-xs-12 TopBar">
+        <div class="col-xs-3 text-left TopBarMart back">
+            <img src="img/iconfont-zuo.png">
+        </div>
+        <div class="col-xs-6 text-center" style="margin-top: 8px;">
+            信息填写
+        </div>
+    </div>
+    <div class="col-xs-12 form-horizontal text-center inputbox">
+        <div class="form-group">
+            <label for="account" class="col-xs-4 control-label">联系人</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="account" placeholder="请输入公司全称/公司简称/手机号码">
+            </div>
+        </div>
+        <div class="form-group top1px">
+            <label for="Post" class="col-xs-4 control-label">联系人职务</label>
+            <div class="btn-group col-xs-8">
+                <button type="button" class="btn btn-default dropdown-toggle" id="Post" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="post">法人代表</span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu postlist">
+                    <li><a value="0" href="#">法人代表</a></li>
+                    <li><a value="0" href="#">投研总监</a></li>
+                    <li><a value="0" href="#">市场总监</a></li>
+                    <li><a value="0" href="#">市场经理</a></li>
+                    <li><a value="0" href="#">投资经理</a></li>
+                    <li><a value="0" href="#">其他</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group top1px">
+            <label for="phonenum" class="col-xs-4 control-label">手机号码</label>
+            <div class="col-xs-8">
+                <input type="tel" class="form-control" maxlength="13" id="phonenum" placeholder="请输入手机号码">
+            </div>
+        </div>
+
+        <div class="form-group top1px">
+            <div class="col-xs-7">
+                <input type="text" class="form-control" id="Verification" placeholder="请输入6位验证码">
+            </div>
+            <label for="Verification" id="sendmessage" class="col-xs-5 control-label">发送验证码</label>
+        </div>
+        <div class="col-xs-12 text-left" style="padding-left:0;margin: 16px 0;">
+            <div style="float:left;">
+                <input type="checkbox" id="checkbox_a1" class="chk_1" />
+                <label id="radio" for="checkbox_a1"></label>
+            </div>
+            <div style="float:left;">
+                已阅读并同意<a href="Promise.html" style="color:#005eaf"><u>《承诺函》</u></a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <button href="SettingPassword.html" class="btn btn-warning btn-block" id="next">下一步</button>
+    </div>
+    <div class="col-xs-12" style="margin-top: 40px;">
+        <p>
+            声明：长安基金保证您的注册信息仅用于业务联系
+            不作为其他商业用途
+        </p>
+    </div>
+
+
+
+</div>
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.js"></script>
+<script src="js/Public.js"></script>
+<script>
+    $(".postlist li a").click(function(){
+        $("#post").attr("value",$(this).attr("value"))
+        $(".post").html($(this).html())
+    })
+    $("#sendmessage").click(function(){
+        $(this).addClass("forbidclick");
+        settime(this)
+    })
+    $("#next").click(function(){
+
+        if($("#account").val()==""){
+            swal({title:"" ,text: "请输入联系人",   timer: 1500,   showConfirmButton: false });
+        }else{
+
+            if($("#phonenum").val()==""){
+                swal({title:"" ,text: "请输入手机号码",   timer: 1500,   showConfirmButton: false });
+            }else{
+
+                if($("#Verification").val()==""){
+                    swal({title:"" ,text: "请输入验证码",   timer: 1500,   showConfirmButton: false });
+                }else{
+                    if(!$("#radio").hasClass("checked")){
+                        swal({title:"" ,text: "请查看承诺函，并点击单选框",   timer: 1500,   showConfirmButton: false });
+                    }else{
+                        localStorage.Name = $("#account").val();
+                        localStorage.Phone = $("#phonenum").val();
+                        localStorage.Post = $(".post").html();
+                        window.location.href="SettingPassword.html"
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

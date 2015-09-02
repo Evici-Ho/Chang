@@ -1,0 +1,59 @@
+{
+    "button": [
+        {
+            "name": "我要合作",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "流程介绍",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5bf99c76127b5974&redirect_uri=http://1.changantg.sinaapp.com/ChangAn/Flow.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+                },
+                {
+                    "type": "view",
+                    "name": "我要发产品",
+                    "url": "http://1.lori.sinaapp.com/changan/MyAccount.html"
+                }
+            ]
+        },
+        {
+            "name": "我要查询",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "进度查询",
+                    "url": "http://changantg.sinaapp.com/"
+                },
+                {
+                    "type": "view",
+                    "name": "产品查询",
+                    "url": "http://changantg.sinaapp.com/"
+                }
+            ]
+        },
+        {
+            "name": "更多精彩",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "长安基金",
+                    "url": "http://changantg.sinaapp.com/"
+                },
+                {
+                    "type": "view",
+                    "name": "最新活动",
+                    "url": "http://changantg.sinaapp.com/"
+                },
+                {
+                    "type": "view",
+                    "name": "联系我们",
+                    "url": "http://changantg.sinaapp.com/"
+                },
+                {
+                    "type": "view",
+                    "name": "常见问题",
+                    "url": "http://changantg.sinaapp.com/"
+                }
+            ]
+        }
+    ]
+}

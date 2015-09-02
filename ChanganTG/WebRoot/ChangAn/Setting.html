@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择产品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" /> <!--safari 全屏展示-->
+    <!--<meta content="black" name="apple-mobile-web-app-status-bar-style" /> <!--IOS 顶栏状态栏 运营商那个地方的样式-->
+    <meta content="telephone=no" name="format-detection" /> <!--IOS电话格式无视-->
+    <meta content="email=no" name="format-detection" /><!--安卓邮件格式无视-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/Setting.css">
+    <!--<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body>
+<div class="container">
+    <div class="col-xs-12 TopBar">
+        <div class="col-xs-3 text-left TopBarMart" id="back">
+            <img src="img/iconfont-zuo.png">
+        </div>
+        <div class="col-xs-6 text-center TopBarMart" >
+            设置
+        </div>
+    </div>
+    <div class="col-xs-12 content">
+        <p class="changepassword">修改密码<span class="right"><img src="img/rightArrow.png" width="12"></span></p>
+        <p class="changephone" id="changephonenum">变更手机号<span class="right"><img src="img/rightArrow.png" width="12"></span></p>
+        <p class="About">关于长安<span class="right"><img src="img/rightArrow.png" width="12"></span></p>
+        <p class="Contact">联系我们<span class="right"><img src="img/rightArrow.png" width="12"></span></p>
+        <p class="Q-A">常见问答<span class="right"><img src="img/rightArrow.png" width="12"></span></p>
+    </div>
+
+</div>
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.js"></script>
+<script src="js/Public.js"></script>
+<script>
+    $(".changepassword").click(function(){
+        window.location.href="ChangePassword.html"
+    })
+    $(".About").click(function(){
+        window.location.href="About.html"
+    })
+    $(".Q-A").click(function(){
+        window.location.href="QA.html"
+    })
+
+
+</script>
+</body>
+</html>

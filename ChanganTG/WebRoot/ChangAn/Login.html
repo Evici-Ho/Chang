@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>长安基金</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" /> <!--safari 全屏展示-->
+    <!--<meta content="black" name="apple-mobile-web-app-status-bar-style" /> <!--IOS 顶栏状态栏 运营商那个地方的样式-->
+    <meta content="telephone=no" name="format-detection" /> <!--IOS电话格式无视-->
+    <meta content="email=no" name="format-detection" /><!--安卓邮件格式无视-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.bootcss.com/owl-carousel/1.32/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/owl-carousel/1.32/owl.theme.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/Login.css">
+    <!--<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body>
+<div class="container">
+    <div class="col-xs-12 TopBar">
+        <div class="col-xs-6 col-xs-offset-3 text-center" style="margin-top: 8px;">
+            登录
+        </div>
+    </div>
+    <div class="col-xs-12 slide">
+        <div id="owl-example" class="owl-carousel">
+            <div><img src="img/Loginbanner1.jpg"></div>
+            <div><img src="img/Loginbanner2.jpg"></div>
+        </div>
+    </div>
+    <div class="col-xs-12 form-horizontal text-center inputbox">
+        <div class="form-group">
+            <label for="account" class="width25 control-label">用户名称</label>
+            <div class="width75">
+                <input type="text" class="form-control" id="account" placeholder="请输入公司全称/公司简称/手机号码">
+            </div>
+        </div>
+        <div class="form-group top1px">
+            <label for="password" class="width25 control-label">登录密码</label>
+            <div class="width75">
+                <input type="password" class="form-control" maxlength="6" id="password" placeholder="请输入6位数字密码">
+            </div>
+        </div>
+        <div class="col-xs-12 text-right">
+            <a href="ForgetPassword.html" style="color:#878787">忘记密码</a>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <button class="btn btn-warning btn-block" id="Register">注册</button>
+    </div>
+    <div class="col-xs-6">
+        <button class="btn btn-info btn-block" id="Login">登录</button>
+    </div>
+
+
+</div>
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/owl-carousel/1.32/owl.carousel.min.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.js"></script>
+<script src="js/Public.js"></script>
+<script>
+    $(document).ready(function() {
+        var owl = $("#owl-example");
+        owl.owlCarousel({
+            navigationText:["prev","next"],
+            slideSpeed: 300,
+            autoPlay: true,
+            pagination: true,
+            items: 1
+        })
+        $("#Register").click(function(){
+            window.location.href="Register.html"
+        });
+        $("#Login").click(function(){
+           if($("#account").val()==""){swal({title:"",text:"用户名称不能为空",html: true},function(){$("#account").focus()})}else{
+                if($("#password").val()==""){swal({title:"",text:"密码不能为空",html: true},function(){$("#password").focus()})}else{
+                    window.location.href="MyAccount.html";
+                }
+           }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+.DetailsData {
+    margin-top: 5px;
+    padding: 5px 15px;
+    color: #4a4a4a;
+    background: #fff;
+}
+.DetailsData p {
+    height: 44px;
+    line-height: 44px;
+    background: #fff;
+    border-bottom: 1px solid #e4e4e4;
+}
+.DetailsCharts {
+    padding: 0;
+    margin-top: 5px;
+    color: #9c9c9c;
+}
+.DetailsCharts div {
+    padding: 0;
+}
+.DetailsCharts p {
+    padding: 0 15px;
+}
+.owl-theme .owl-controls .owl-page span {
+    background: #ffb412;
+}
+.CallProjectManager {
+    height: 40px;
+    line-height: 40px;
+    font-size: .8rem;
+    background-color: #ffb412;
+}
+a ,a:visited,a:focus a:active,a:link{
+    text-decoration:none;
+    color:#fff;
+}
+.CallProjectManager img {
+    margin-top: -4px;
+    margin-right: 5px;
+}
+
+

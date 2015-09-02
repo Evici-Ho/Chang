@@ -1,0 +1,25 @@
+.content {
+    padding: 10px 0;
+    font-size: 0.8rem;
+    background: #fff;
+}
+.content div {
+    border-bottom: 1px solid #dcdcdc;
+}
+.ContactItems {
+    padding: 0;
+    background: #fff;
+    font-size: 0.7rem;
+    font-weight: 400!important;
+    border-bottom: 1px solid #d1d0d0;
+}
+.ContactItems address {
+    padding: 5px 15px;
+}
+.ContactItems label.col-xs-8 {
+    color: #878787;
+}
+address {
+    margin-bottom: 0;
+    font-style: normal;
+}

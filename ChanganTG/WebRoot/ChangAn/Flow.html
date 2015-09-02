@@ -1,0 +1,51 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>我要合作</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta content="yes" name="apple-mobile-web-app-capable" /> <!--safari 全屏展示-->
+        <!--<meta content="black" name="apple-mobile-web-app-status-bar-style" /> <!--IOS 顶栏状态栏 运营商那个地方的样式-->
+        <meta content="telephone=no" name="format-detection" /> <!--IOS电话格式无视-->
+        <meta content="email=no" name="format-detection" /><!--安卓邮件格式无视-->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link href="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/demo.css">
+        <link rel="stylesheet" href="css/Flow.css">
+        <!--<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">-->
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-xs-12 TopBar">
+                <div class="col-xs-6 col-xs-offset-3 text-center TopBarMart" >
+                    合作流程
+                </div>
+            </div>
+            <div class="col-xs-12 content">
+                <p>请您仔细阅读以下合作流程：</p>
+                <div class="row col-xs-12 p"><span class="num">1</span>注册登录</div>
+                <div class="col-xs-12 left-line"></div>
+                <div class="row col-xs-12 p"><span class="num">2</span>选定产品要素</div>
+                <div class="col-xs-12 left-line"></div>
+                <div class="row col-xs-12 p"><span class="num">3</span>双方确认产品细节，发起产品</div>
+                <div class="col-xs-12 left-line"></div>
+                <div class="row col-xs-12 p"><span class="num">4</span>产品进度在线查询</div>
+                <div class="col-xs-12 left-line"></div>
+                <div class="row col-xs-12 p"><span class="num">5</span>产品成立</div>
+            </div>
+            <div class="col-xs-12 text-center">
+                <h5 style="font-size: 13pt;">标准化产品，最快2周可成立</h5>
+                <p style="font-size: 10pt;">具体以各产品实际进度为准</p>
+                <button class="btn btn-warning btn-block">马上注册</button>
+            </div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.js"></script>
+        <script src="js/Public.js"></script>
+        <script>
+            localStorage.Code = request("code")
+            $(".btn").click(function(){
+                window.location.href="Register.html";
+            })
+        </script>
+    </body>
+</html>

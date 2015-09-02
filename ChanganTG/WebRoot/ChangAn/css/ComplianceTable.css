@@ -1,0 +1,29 @@
+.TopBar {
+    height: 50px;
+}
+.TopBarMart {
+    font-size: 0.8rem;
+}
+#back {
+    margin-top: 15px;
+}
+.TableBox {
+    padding: 10px 0;
+    background: #fff;
+}
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+    border: 1px solid #60a9f4;
+}
+.table tbody tr td:first-child{
+    width: 21%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0.61rem;
+    border-left: 0;
+    background: #f6fbff;
+    color: #878787;
+}
+.table tbody tr td:last-child{
+    font-size: 0.71rem;
+    border-right: 0;
+}
